@@ -51,7 +51,7 @@ public class Calculator {
         return value1 * value1;
     }
 
-    public static double square(double value1) {
+    public static double cube(double value1) {
         /**
          * This method should square a value (double) provided by the user.
          */
