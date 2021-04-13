@@ -9,5 +9,22 @@ mvn clean install'''
       }
     }
 
+    stage('test') {
+      parallel {
+        stage('test') {
+          steps {
+            sh 'mvn -Dtest=CalculatorSpec test'
+          }
+        }
+
+        stage('static analysis') {
+          steps {
+            sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dlicense.skip=true -Dsonar.login="cbbbc45841aa6b486be88b8d1977346006a03b0d"'
+          }
+        }
+
+      }
+    }
+
   }
 }
